@@ -1,0 +1,18 @@
+
+version: '3.8'
+services:
+  deepl-fastmcp-server:
+    build: .
+    container_name: deepl-fastmcp-server
+    environment:
+      - DEEPL_AUTH_KEY=${DEEPL_AUTH_KEY}
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    # Healthcheck (make sure /health endpoint exists in your app)
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
