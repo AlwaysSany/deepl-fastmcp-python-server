@@ -28,10 +28,14 @@ A Model Context Protocol (MCP) server that provides translation capabilities usi
 2. **Install [uv](https://github.com/astral-sh/uv?tab=readme-ov-file#installation) (recommended) or use pip:**
 
 With pip,
+```bash 
     pip install uv
+```
 
 With pipx,
+```bash
     pipx install uv
+```
 
 3. **Install dependencies:**
 
