@@ -21,7 +21,7 @@ A Model Context Protocol (MCP) server that provides translation capabilities usi
 
 1. **Clone the repository:**
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/AlwaysSany/deepl-fastmcp-python-server.git
    cd deepl-fastmcp-python-server
    ```
 
