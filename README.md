@@ -27,59 +27,63 @@ A Model Context Protocol (MCP) server that provides translation capabilities usi
 
 2. **Install [uv](https://github.com/astral-sh/uv?tab=readme-ov-file#installation) (recommended) or use pip:**
 
-  With **pip**,
-  
-  ```bash 
-  pip install uv 
-  ```
+    With **pip**,
+    
+    ```bash 
+    pip install uv 
+    ```
 
-  With **pipx**,
-  ```bash
-  pipx install uv
-  ```
+    With **pipx**,
+    ```bash
+    pipx install uv
+    ```
 
 3. **Install dependencies:**
 
-  ```bash
-  uv sync
-  ```
+    ```bash
+    uv sync
+    ```
 
 4. **Set your environment variables:**
 
-Create a `.env` file or export `DEEPL_AUTH_KEY` in your shell.You can do this by running the following command and then update the `.env` file with your DeepL API key:
+    Create a `.env` file or export `DEEPL_AUTH_KEY` in your shell.You can do this by running the following command and then update the `.env` file with your DeepL API key:
 
-   ```bash
-   cp .env.example .env
-   ```
+
+    ```bash
+    cp .env.example .env
+    ```
  
-Example `.env` file:
-```
-DEEPL_AUTH_KEY=your_deepl_api_key
-```
+    Example `.env` file,
+
+    ```bash
+    DEEPL_AUTH_KEY=your_deepl_api_key
+    ```
 
 5. **Run the server:**
 
-**Normal** mode:
+    **Normal** mode:
 
-```bash
-uv run mcp run main.py
-```
+    ```bash
+    uv run mcp run main.py
+    ```
 
-**Development** mode:
+    **Development** mode:
 
-```bash
-uv run mcp dev main.py
-```
+    ```bash
+    uv run mcp dev main.py
+    ```
 
 It will show some messages in the terminal like this:
 
-      Spawned stdio transport
-      Connected MCP client to backing server transport
-      Created web app transport
-      Set up MCP proxy
-      🔍 MCP Inspector is up and running at http://127.0.0.1:6274 
+> Spawned stdio transport Connected MCP client to backing server transport
 
-MCP Inspector,
+> Created web app transport
+
+> Set up MCP proxy
+
+> 🔍 MCP Inspector is up and running at http://127.0.0.1:6274 
+
+**MCP Inspector**,
 
 ![MCP Inspector](screenshots/mcp-inspector.png)
 
@@ -152,7 +156,7 @@ and paste the following json:
 }
 ```
 
-Cursor Settings,
+**Cursor Settings**,
 
 ![Cursor MCP Server](screenshots/mcp-cursor-settings.png)
 
