@@ -254,7 +254,14 @@ Detect the language of given text using DeepL.
 - Parameters:
   - `text`: Text to analyze for language detection
 
-#### get_source_languages / get_target_languages / get_usage / get_glossary_languages / get_translation_history / analyze_usage_patterns
+#### 
+get_source_languages 
+get_target_languages
+get_usage
+get_glossary_languages
+get_translation_history
+analyze_usage_patterns
+
 - No parameters required. See tool output for details.
 
 ---
