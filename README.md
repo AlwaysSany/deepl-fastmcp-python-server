@@ -15,6 +15,12 @@ A Model Context Protocol (MCP) server that provides translation capabilities usi
 
 ---
 
+## Working Demo
+
+[DeepL MCP Demo](https://github.com/AlwaysSany/deepl-fastmcp-python-server/issues/1#issue-3125458719)
+
+
+
 ## Installation
 
 ### Standard (Local) Installation
@@ -85,7 +91,7 @@ It will show some messages in the terminal like this:
 
 **MCP Inspector**,
 
-![MCP Inspector](screenshots/mcp-inspector.png)
+![MCP Inspector](assets/mcp-inspector.png)
 
 
 ### Dockerized Installation
@@ -158,7 +164,7 @@ and paste the following json:
 
 **Cursor Settings**,
 
-![Cursor MCP Server](screenshots/mcp-cursor-settings.png)
+![Cursor MCP Server](assets/mcp-cursor-settings.png)
 
 
 ## Use with Claude Desktop
