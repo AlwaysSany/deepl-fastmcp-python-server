@@ -19,7 +19,10 @@ A Model Context Protocol (MCP) server that provides translation capabilities usi
 ## Working Demo
 
 
-<video src="https://raw.githubusercontent.com/sany2k8/resource/blob/main/deepl_fastmcp/deepl_fastmcp_pthon_mcp_server.webm" controls width="100%"></video>
+<video src="https://private-user-images.githubusercontent.com/3911298/452408725-04acb3c8-f37b-43a9-8b6f-249843a052ed.webm?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkyMzI2NzYsIm5iZiI6MTc0OTIzMjM3NiwicGF0aCI6Ii8zOTExMjk4LzQ1MjQwODcyNS0wNGFjYjNjOC1mMzdiLTQzYTktOGI2Zi0yNDk4NDNhMDUyZWQud2VibT9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA2MDYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNjA2VDE3NTI1NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWM5NTJiMjhjMWVlODM0ZDVlMzMyNzgzNGE5NmRhZTI0YjQ5OGI5NzUzMWFkZTkxNzU0MDJkNDRmZWMwYTk1Y2ImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Kp9OyvzESVW_ml5tQhg1U5Fh_rFar78HDv0uXPaVAkU" controls width="100%"></video>
+
+<!-- [![Watch the video](https://raw.githubusercontent.com/sany2k8/resource/blob/main/deepl_fastmcp/thumbnail_deepl_fastmcp_demo_video.png)](https://raw.githubusercontent.com/sany2k8/resource/blob/main/deepl_fastmcp/deepl_fastmcp_pthon_mcp_server.webm) -->
+
 
 ## Installation
 
