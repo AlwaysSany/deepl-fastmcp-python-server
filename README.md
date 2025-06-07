@@ -12,15 +12,14 @@ A Model Context Protocol (MCP) server that provides translation capabilities usi
 - Batch translation and document translation
 - Usage and quota reporting
 - Translation history and usage analysis
+- **Support for multiple MCP transports**: stdio, SSE, and Streamable HTTP
 
 ---
 
 ## Working Demo
 
 
-<video src="https://private-user-images.githubusercontent.com/3911298/452408725-04acb3c8-f37b-43a9-8b6f-249843a052ed.webm?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkyMzI2NzYsIm5iZiI6MTc0OTIzMjM3NiwicGF0aCI6Ii8zOTExMjk4LzQ1MjQwODcyNS0wNGFjYjNjOC1mMzdiLTQzYTktOGI2Zi0yNDk4NDNhMDUyZWQud2VibT9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA2MDYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNjA2VDE3NTI1NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWM5NTJiMjhjMWVlODM0ZDVlMzMyNzgzNGE5NmRhZTI0YjQ5OGI5NzUzMWFkZTkxNzU0MDJkNDRmZWMwYTk1Y2ImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Kp9OyvzESVW_ml5tQhg1U5Fh_rFar78HDv0uXPaVAkU" controls width="100%"></video>
-
-
+<video src="https://raw.githubusercontent.com/sany2k8/resource/blob/main/deepl_fastmcp/deepl_fastmcp_pthon_mcp_server.webm" controls width="100%"></video>
 
 ## Installation
 
@@ -71,7 +70,19 @@ A Model Context Protocol (MCP) server that provides translation capabilities usi
     **Normal** mode:
 
     ```bash
-    uv run mcp run main.py
+    uv run python main.py --transport stdio
+    ```
+
+    To run with **Streamable HTTP** transport (recommended for web deployments):
+
+    ```bash
+    uv run python main.py --transport streamable-http --host 127.0.0.1 --port 8000
+    ```
+
+    To run with **SSE** transport:
+
+    ```bash
+    uv run python main.py --transport sse --host 127.0.0.1 --port 8000
     ```
 
     **Development** mode:
@@ -116,7 +127,7 @@ It will show some messages in the terminal like this:
 
 2. **Start the service:**
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
    This will build the image and start the server, mapping port 8000 on your host to the container.
 
@@ -131,6 +142,15 @@ You'll need a DeepL API key to use this server. You can get one by signing up at
 **Required environment variables:**
 - `DEEPL_AUTH_KEY` (required): Your DeepL API key.
 - `DEEPL_SERVER_URL` (optional): Override the DeepL API endpoint (default: `https://api-free.deepl.com`).
+
+### MCP Transports
+
+This server supports the following MCP transports:
+- **Stdio**: Default transport for local usage.
+- **SSE (Server-Sent Events)**: Ideal for real-time event-based communication.
+- **Streamable HTTP**: Suitable for HTTP-based streaming applications.
+
+To configure these transports, ensure your environment supports the required protocols and dependencies.
 
 ---
 
@@ -154,14 +174,21 @@ and paste the following json:
         "run",
         "--with",
         "mcp",
-        "mcp",
-        "run",
-        "/path/to/your/deepl-fastmcp-python-server/main.py"
+        "python",
+        "/path/to/your/deepl-fastmcp-python-server/main.py",
+        "--transport",
+        "streamable-http",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000"
       ]
     }
   }
 }
 ```
+
+**Note**: To use Streamable HTTP or SSE transports with Cursor IDE, change the `"--transport", "stdio"` line to `"--transport", "streamable-http", "--host", "127.0.0.1", "--port", "8000"` or `"--transport", "sse", "--host", "127.0.0.1", "--port", "8000"` respectively, and adjust the host and port as needed.
 
 **Cursor Settings**,
 
@@ -194,14 +221,21 @@ This MCP server integrates with Claude Desktop to provide translation capabiliti
         "run",
         "--with",
         "mcp",
-        "mcp",
-        "run",
-        "/path/to/your/deepl-fastmcp-python-server/main.py"
+        "python",
+        "/path/to/your/deepl-fastmcp-python-server/main.py",
+        "--transport",
+        "streamable-http",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000"
       ]
     }
   }
 }
 ```
+
+**Note**: To use Streamable HTTP or SSE transports with Claude Desktop, change the `"--transport", "stdio"` line to `"--transport", "streamable-http", "--host", "127.0.0.1", "--port", "8000"` or `"--transport", "sse", "--host", "127.0.0.1", "--port", "8000"` respectively, and adjust the host and port as needed.
 
 ---
 

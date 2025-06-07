@@ -1,6 +1,7 @@
 import asyncio
 import os
 import logging
+import argparse
 from typing import Any, Dict, List, Optional, Union
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
@@ -730,4 +731,26 @@ def analyze_usage_patterns() -> Dict[str, Any]:
 
 
 if __name__ == "__main__":
-    asyncio.run(mcp.run())
+    parser = argparse.ArgumentParser(description="DeepL FastMCP server")
+    parser.add_argument("--transport", choices=["stdio", "streamable-http", "sse"], help="Transport to use")
+    parser.add_argument("--host", help="Host to bind to")
+    parser.add_argument("--port", type=int, help="Port to bind to")
+
+    args = parser.parse_args()
+
+    try:
+        if args.transport == "stdio":
+            mcp.run(transport="stdio")
+            logger.info("DeepL FastMCP server running with STDIO transport.")
+        elif args.transport == "streamable-http":
+            mcp.run(transport="streamable-http", host=args.host, port=args.port)
+            logger.info(f"DeepL FastMCP server running with Streamable HTTP transport on http://{args.host}:{args.port}/mcp")
+        elif args.transport == "sse":
+            mcp.run(transport="sse", host=args.host, port=args.port)
+            logger.info(f"DeepL FastMCP server running with SSE transport on http://{args.host}:{args.port}/sse")
+        else:
+            parser.error("Invalid transport specified.")
+    except Exception as e:
+        logger.error(f"Failed to start FastMCP server: {e}")
+        import sys
+        sys.exit(1)
