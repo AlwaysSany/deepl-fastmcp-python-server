@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.12-slim
+FROM python:3.13-slim
 
 # Install uv (modern Python package manager)
 RUN pip install --upgrade pip && pip install uv
@@ -9,10 +9,13 @@ RUN pip install --upgrade pip && pip install uv
 WORKDIR /app
 
 # Copy project files
-COPY . .
+COPY pyproject.toml uv.lock ./
 
 # Install dependencies using uv
-RUN uv pip install --system --no-cache-dir
+RUN uv pip install --system --no-cache-dir .
+
+# Copy the rest of the application
+COPY . .
 
 # Expose port for the server
 EXPOSE 8000
