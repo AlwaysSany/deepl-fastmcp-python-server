@@ -354,6 +354,26 @@ If you encounter errors with the DeepL API, check the following:
 
 MIT
 
+## TODOs
+- [ ] Add more test cases
+- [ ] Add more features
+- [ ] Add more documentation
+- [ ] Add more security features
+- [ ] Add more logging
+- [ ] Add more monitoring
+- [ ] Add more performance optimization
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
+
+See more at [Contributing](https://github.com/AlwaysSany/deepl-fastmcp-python-server/blob/main/CONTRIBUTING.md)
+
+## Contact
+
+- Author: [Sany Ahmed](https://github.com/sany2k8)
+- Email: sany2k8@gmail.com
+
 ## Links
 
 - [DeepL API Documentation](https://www.deepl.com/docs-api?utm_source=github&utm_medium=github-mcp-server-readme)
