@@ -257,7 +257,7 @@ This server provides the following tools:
 ### Tool Details
 
 <details>
-  <summary>🖼️ Click to see the tool details
+  <summary>🖼️ Click to see the tool details</summary>
   
 #### translate_text
 Translate text between languages using the DeepL API.
@@ -314,7 +314,7 @@ Detect the language of given text using DeepL.
 #### analyze_usage_patterns
 - No parameters required. See tool output for details.
   
-</summary></
+</details>
 
 
 ## Supported Languages
