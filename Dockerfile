@@ -30,4 +30,4 @@ ENV DEEPL_AUTH_KEY=""
 # Default command to run the server
 # run with python remote_server.py
 
-CMD ["uv", "run", "mcp", "run", "remote_server.py"]
+CMD ["uv", "run", "mcp", "run", "main.py"]

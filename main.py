@@ -743,10 +743,10 @@ if __name__ == "__main__":
             mcp.run(transport="stdio")
             logger.info("DeepL FastMCP server running with STDIO transport.")
         elif args.transport == "streamable-http":
-            mcp.run(transport="streamable-http", host=args.host, port=args.port)
-            logger.info(f"DeepL FastMCP server running with Streamable HTTP transport on http://{args.host}:{args.port}/mcp")
+            mcp.run(transport="streamable-http")
+            logger.info(f"DeepL FastMCP server running with Streamable HTTP transport on http://{args.host}:{args.port}/mcp")   
         elif args.transport == "sse":
-            mcp.run(transport="sse", host=args.host, port=args.port)
+            mcp.run(transport="sse")
             logger.info(f"DeepL FastMCP server running with SSE transport on http://{args.host}:{args.port}/sse")
         else:
             parser.error("Invalid transport specified.")
