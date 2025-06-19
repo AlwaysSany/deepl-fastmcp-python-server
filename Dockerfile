@@ -28,4 +28,6 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
 ENV DEEPL_AUTH_KEY=""
 
 # Default command to run the server
-CMD ["uv", "run", "mcp", "run", "main.py"]
+# run with python remote_server.py
+
+CMD ["uv", "run", "mcp", "run", "remote_server.py"]
