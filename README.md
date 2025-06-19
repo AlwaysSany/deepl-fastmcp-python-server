@@ -350,6 +350,28 @@ If you encounter errors with the DeepL API, check the following:
 
 ---
 
+## Deploy on server
+
+To deploy on a server(render.com), you can use the following commands:
+
+```bash
+uv pip compile pyproject.toml > requirements.txt
+echo "python-3.13.3" > runtime.txt
+```
+
+Then, set a command to run the server in your deployment configuration:
+
+```bash 
+python remote_server.py
+```
+
+and also set the environment variable `DEEPL_SERVER_URL` and `DEEPL_AUTH_KEY` with your DeepL API key.
+
+---
+
+
+
+
 ## License
 
 MIT
