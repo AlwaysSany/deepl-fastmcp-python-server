@@ -334,14 +334,6 @@ Detect the language of given text using DeepL.
 - Parameters:
   - `text`: Text to analyze for language detection
 
-#### get_source_languages
-- No parameters required. See tool output for details. 
-#### get_target_languages
-- No parameters required. See tool output for details.
-#### get_usage
-- No parameters required. See tool output for details.
-#### get_glossary_languages
-- No parameters required. See tool output for details.
 #### get_translation_history
 - No parameters required. See tool output for details.
 #### analyze_usage_patterns
