@@ -377,14 +377,24 @@ If you encounter errors with the DeepL API, check the following:
 
 ## Deploy on server
 
-To deploy on a server(render.com), you can use the following commands:
+To deploy on a server(render.com), you need to compile your `pyproject.toml` to `requirements.txt`
+because it doesn't support `uv` right now. So to do that, you can use the following commands:
 
 ```bash
 uv pip compile pyproject.toml > requirements.txt
-echo "python-3.13.3" > runtime.txt
 ```
 
-and also set the environment variable `PORT`, `DEEPL_SERVER_URL` and `DEEPL_AUTH_KEY` with your DeepL API key.
+then, create a `runtime.txt` file with the python version,
+
+```bash
+echo "python-3.13.3" > runtime.txt  
+```
+
+finally, set the environment variable `PORT`, `DEEPL_SERVER_URL` and `DEEPL_AUTH_KEY` with your DeepL API key on render.com workspace before you set the entry point,
+
+```bash
+python main.py --transport sse --host 0.0.0.0 --port 8000 
+````
 
 ---
 
