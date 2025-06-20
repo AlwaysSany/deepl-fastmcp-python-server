@@ -200,7 +200,7 @@ For example,
   }
 ```
 
-and then run from terminal `uv run main.py --transport sse --host 127.0.0.1 --port 8000`
+and then run mcp server from terminal `uv run main.py --transport sse --host 127.0.0.1 --port 8000`
 
 **Cursor Settings**,
 
@@ -392,7 +392,20 @@ uv pip compile pyproject.toml > requirements.txt
 echo "python-3.13.3" > runtime.txt
 ```
 
-and also set the environment variable `DEEPL_SERVER_URL` and `DEEPL_AUTH_KEY` with your DeepL API key.
+and also set the environment variable `PORT`, `DEEPL_SERVER_URL` and `DEEPL_AUTH_KEY` with your DeepL API key.
+
+---
+
+## Deployment
+
+The MCP server is live and accessible on Render.com.
+
+**Live Endpoint:**  
+[https://deepl-fastmcp-python-server.onrender.com/sse](https://deepl-fastmcp-python-server.onrender.com/sse)
+
+You can interact with the API at the above URL.
+
+[![Deploy on Render](https://img.shields.io/badge/Deployed%20on-Render.com-blue)](https://deepl-fastmcp-python-server.onrender.com/sse)
 
 ---
 
