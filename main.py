@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import deepl
 
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
 
 # Load environment variables
@@ -143,7 +143,7 @@ def translate_text(
             "original_text": text
         }
 
-@mcp.tool()
+
 def get_source_languages() -> Dict[str, Any]:
     """
     Retrieve supported source languages from DeepL API.
@@ -179,7 +179,7 @@ def get_source_languages() -> Dict[str, Any]:
             "error": str(e)
         }
 
-@mcp.tool()
+
 def get_target_languages() -> Dict[str, Any]:
     """
     Retrieve supported target languages from DeepL API.
@@ -221,7 +221,6 @@ def get_target_languages() -> Dict[str, Any]:
             "error": str(e)
         }
 
-@mcp.tool()
 def get_usage() -> Dict[str, Any]:
     """
     Check DeepL API usage and limits
@@ -596,7 +595,7 @@ def detect_language(text: str) -> Dict[str, Any]:
             "text_sample": text[:100] + "..." if len(text) > 100 else text
         }
 
-@mcp.tool()
+
 def get_glossary_languages() -> Dict[str, Any]:
     """
     Get supported language pairs for glossaries.
@@ -729,12 +728,40 @@ def analyze_usage_patterns() -> Dict[str, Any]:
             "error": str(e)
         }
 
+@mcp.resource("usage://deepl")
+def usage_resource():
+    return get_usage()
+
+@mcp.resource("deepl://languages/source")
+def source_languages_resource():
+    return get_source_languages()
+
+@mcp.resource("deepl://languages/target")
+def target_languages_resource():
+    return get_target_languages()
+
+@mcp.resource("deepl://glossaries")
+def glossary_languages_resource():
+    return get_glossary_languages()
+
+@mcp.resource("history://translations")
+def translation_history_resource():
+    return get_translation_history()
+
+@mcp.resource("usage://patterns")
+def usage_patterns_resource():
+    return analyze_usage_patterns()
+
+@mcp.prompt("summarize")
+def summarize_prompt(text: str) -> str:
+    """Prompt to summarize a given text."""
+    return f"Please summarize the following text:\n\n{text}"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="DeepL FastMCP server")
     parser.add_argument("--transport", choices=["stdio", "streamable-http", "sse"], help="Transport to use")
-    parser.add_argument("--host", help="Host to bind to")
-    parser.add_argument("--port", type=int, help="Port to bind to")
+    parser.add_argument("--host", help="Host to bind to", default="0.0.0.0")
+    parser.add_argument("--port", type=int, help="Port to bind to", default=int(os.environ.get("PORT", 8000)))
 
     args = parser.parse_args()
 
@@ -743,10 +770,10 @@ if __name__ == "__main__":
             mcp.run(transport="stdio")
             logger.info("DeepL FastMCP server running with STDIO transport.")
         elif args.transport == "streamable-http":
-            mcp.run(transport="streamable-http")
+            mcp.run(transport="streamable-http", host=args.host, port=args.port)
             logger.info(f"DeepL FastMCP server running with Streamable HTTP transport on http://{args.host}:{args.port}/mcp")   
         elif args.transport == "sse":
-            mcp.run(transport="sse")
+            mcp.run(transport="sse", host=args.host, port=args.port)
             logger.info(f"DeepL FastMCP server running with SSE transport on http://{args.host}:{args.port}/sse")
         else:
             parser.error("Invalid transport specified.")

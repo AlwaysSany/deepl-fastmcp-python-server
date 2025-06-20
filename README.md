@@ -189,6 +189,19 @@ and paste the following json:
 
 **Note**: To use Streamable HTTP or SSE transports with Cursor IDE, change the `"--transport", "stdio"` line to `"--transport", "streamable-http", "--host", "127.0.0.1", "--port", "8000"` or `"--transport", "sse", "--host", "127.0.0.1", "--port", "8000"` respectively, and adjust the host and port as needed.
 
+For example,
+
+```json
+  "mcpServers": {
+    "deepl-fastmcp": {
+        "type": "sse",
+        "url": "http://127.0.0.1:8000/sse"
+    }
+  }
+```
+
+and then run from terminal `uv run main.py --transport sse --host 127.0.0.1 --port 8000`
+
 **Cursor Settings**,
 
 ![Cursor MCP Server](assets/mcp-cursor-settings.png)
@@ -244,15 +257,35 @@ This server provides the following tools:
 
 - `translate_text`: Translate text to a target language
 - `rephrase_text`: Rephrase text in the same or different language
-- `get_source_languages`: Get list of available source languages for translation
-- `get_target_languages`: Get list of available target languages for translation
-- `get_usage`: Check DeepL API usage and limits
 - `batch_translate`: Translate multiple texts in a single request
 - `translate_document`: Translate a document file using DeepL API
 - `detect_language`: Detect the language of given text
-- `get_glossary_languages`: Get supported language pairs for glossaries
 - `get_translation_history`: Get recent translation operation history
 - `analyze_usage_patterns`: Analyze translation usage patterns from history
+
+## Available Resources
+
+The following resources are available for read-only data access (can be loaded into LLM context):
+
+- `usage://deepl`: DeepL API usage info (same as `get_usage` tool)
+- `deepl://languages/source`: Supported source languages (same as `get_source_languages` tool)
+- `deepl://languages/target`: Supported target languages (same as `get_target_languages` tool)
+- `deepl://glossaries`: Supported glossary language pairs (same as `get_glossary_languages` tool)
+- `history://translations`: Recent translation operation history (same as `get_translation_history` tool)
+- `usage://patterns`: Usage pattern analysis (same as `analyze_usage_patterns` tool)
+
+## Available Prompts
+
+The following prompt is available for LLMs:
+
+- `summarize`: Returns a message instructing the LLM to summarize a given text.
+
+  Example usage:
+  ```python
+  @mcp.prompt("summarize")
+  def summarize_prompt(text: str) -> str:
+      return f"Please summarize the following text:\n\n{text}"
+  ```
 
 ### Tool Details
 
@@ -319,7 +352,7 @@ Detect the language of given text using DeepL.
 
 ## Supported Languages
 
-The DeepL API supports a wide variety of languages for translation. You can use the `get_source_languages` and `get_target_languages` tools to see all currently supported languages.
+The DeepL API supports a wide variety of languages for translation. You can use the `get_source_languages` and `get_target_languages` tools, or the `deepl://languages/source` and `deepl://languages/target` resources, to see all currently supported languages.
 
 Some examples of supported languages include:
 
@@ -359,18 +392,9 @@ uv pip compile pyproject.toml > requirements.txt
 echo "python-3.13.3" > runtime.txt
 ```
 
-Then, set a command to run the server in your deployment configuration:
-
-```bash 
-python remote_server.py
-```
-
 and also set the environment variable `DEEPL_SERVER_URL` and `DEEPL_AUTH_KEY` with your DeepL API key.
 
 ---
-
-
-
 
 ## License
 
