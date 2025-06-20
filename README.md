@@ -267,10 +267,10 @@ This server provides the following tools:
 
 The following resources are available for read-only data access (can be loaded into LLM context):
 
-- `usage://deepl`: DeepL API usage info (same as `get_usage` tool)
-- `deepl://languages/source`: Supported source languages (same as `get_source_languages` tool)
-- `deepl://languages/target`: Supported target languages (same as `get_target_languages` tool)
-- `deepl://glossaries`: Supported glossary language pairs (same as `get_glossary_languages` tool)
+- `usage://deepl`: DeepL API usage info.
+- `deepl://languages/source`: Supported source languages.
+- `deepl://languages/target`: Supported target languages.
+- `deepl://glossaries`: Supported glossary language pairs.
 - `history://translations`: Recent translation operation history (same as `get_translation_history` tool)
 - `usage://patterns`: Usage pattern analysis (same as `analyze_usage_patterns` tool)
 
