@@ -6,7 +6,7 @@ We take the security of the DeepL MCP Server seriously. If you discover a securi
 
 **Please do NOT open a public GitHub issue for security vulnerabilities.**
 
-Instead, please send an email to [your-security-email@example.com] (replace with a real email address, or provide instructions for private disclosure if no specific email is available).
+Instead, please send an email to [your-security-email@example.com]
 
 In your report, please include:
 
